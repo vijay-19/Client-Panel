@@ -1,0 +1,72 @@
+<div class="row">
+    <div class="col-md-6">
+        <a routerLink="/" class="btn btn-link">Go to Dashboard</a>
+    </div>
+
+    <div class="col-md-6">
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-header">
+        Add Client
+    </div>
+    <div class="card-body">
+        <form [formGroup]="addClientForm">
+            <div class="form-group">
+                <label for="firstName">First Name</label>
+                <input type="text" class="form-control" formControlName="firstName">
+                <div class="text-danger"
+                    *ngIf="addClientForm.get('firstName')!.hasError('required') && addClientForm.get('firstName')!.touched">
+                    First Name is required
+                </div>
+                <div class="text-danger"
+                    *ngIf="addClientForm.get('firstName')!.hasError('minlength') && addClientForm.get('firstName')!.touched">
+                    First Name should be minimum 2 characters
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="lastName">Last Name</label>
+                <input type="text" class="form-control" [ngClass]="{'is-invalid': (addClientForm.get('lastName')!.hasError('required') && addClientForm.get('lastName')!.touched) 
+    ||    (addClientForm.get('lastName')!.hasError('minlength') && addClientForm.get('lastName')!.touched)}"
+                    formControlName="lastName">
+                <div class="text-danger"
+                    *ngIf="addClientForm.get('lastName')!.hasError('required') && addClientForm.get('lastName')!.touched">
+                    Last Name is required
+                </div>
+                <div class="text-danger"
+                    *ngIf="addClientForm.get('lastName')!.hasError('minlength') && addClientForm.get('lastName')!.touched">
+                    Last Name should be minimum 2 characters
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="text" class="form-control" formControlName="email">
+                <div class="text-danger"
+                    *ngIf="addClientForm.get('email')!.hasError('required') && addClientForm.get('email')!.touched">
+                    Email is required
+                </div>
+                <div class="text-danger"
+                    *ngIf="addClientForm.get('email')!.hasError('email') && addClientForm.get('email')!.touched">
+                    Email should be valid one
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="phoneNo">Phone Number</label>
+                <input type="text" class="form-control" formControlName="phoneNo">
+            </div>
+
+            <div class="form-group">
+                <label for="balance">Balance</label>
+                <input type="text" class="form-control" formControlName="balance">
+            </div>
+
+        </form>
+        <br>
+        <button type="submit" class="btn btn-primary" (click)="addClient()">Submit</button>
+
+    </div>
+</div>

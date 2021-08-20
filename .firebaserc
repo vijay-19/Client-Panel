@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "clientpanelprod-df240": {
+      "hosting": {
+        "clientPanel": [
+          "clientpanelprod-df240"
+        ]
+      }
+    }
+  }
+}
